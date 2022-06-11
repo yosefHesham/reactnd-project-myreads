@@ -1,7 +1,6 @@
 import React from "react";
 // import * as BooksAPI from './BooksAPI'
 import "./App.css";
-import BookShelf from "./components/bookshelf";
 import RouteHandler from "./components/routHandler";
 
 const BooksApp = () => {

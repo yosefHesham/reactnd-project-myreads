@@ -47,9 +47,9 @@ const MainPage = () => {
           />
         ))}{" "}
       </div>
-      <div className="open-search">
-        <Link to="/searchPage"> Add a Book </Link>
-      </div>
+      <Link className="open-search" to="/searchPage">
+              <button >Add a book</button>
+            </Link>
     </div>
   );
 };

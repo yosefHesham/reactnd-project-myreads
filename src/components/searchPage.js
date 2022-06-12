@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getAll, search } from "../BooksAPI";
+import { getAll, search,update} from "../BooksAPI";
 import Books from "./books";
 
 const showResult = async (searchField, setResult) => {
@@ -42,6 +42,11 @@ const SearchPage = () => {
     };
     getAllBooks();
   }, []);
+  const updateBook = async (bookId,shelf) => {
+    result.find(book => book.id === bookId).shelf = shelf;
+    setResult(result)
+    await update(bookId,shelf)
+  }
   return (
     <div className="search-books">
       <div className="search-books-bar">
@@ -58,7 +63,7 @@ const SearchPage = () => {
         </div>
       </div>
       <div className="search-books-results">
-        <Books books={result} selectedBooks = {selectedBooks} />
+        <Books books={result} selectedBooks = {selectedBooks} updateBook={updateBook} />
       </div>
     </div>
   );

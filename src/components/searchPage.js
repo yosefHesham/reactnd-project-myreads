@@ -34,6 +34,7 @@ const SearchPage = () => {
     },
     [searchValue]
   );
+  console.log(result)
   return (
     <div className="search-books">
       <div className="search-books-bar">

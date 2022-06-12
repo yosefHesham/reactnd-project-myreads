@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { search } from "../BooksAPI";
+import { getAll, search } from "../BooksAPI";
 import Books from "./books";
 
 const showResult = async (searchField, setResult) => {
@@ -10,12 +10,12 @@ const showResult = async (searchField, setResult) => {
       setResult([]);
     } else {
       setResult(result || []);
-
     }
   } catch (e) {
     console.log(e);
   }
 };
+
 const SearchPage = () => {
   const [searchValue, setSearchValue] = React.useState("");
   const handleSearchField = (value) => {
@@ -27,14 +27,21 @@ const SearchPage = () => {
     () => {
       if (searchValue.length !== 0 && searchValue) {
         showResult(searchValue, setResult);
-      }
-      else {
-        setResult([])
+      } else {
+        setResult([]);
       }
     },
     [searchValue]
   );
-  console.log(result)
+    const [selectedBooks, setSelectedBooks] = React.useState([])
+  React.useEffect(() => {
+    const getAllBooks = async () => {
+      const allBooks = await getAll();
+      setSelectedBooks(allBooks)
+      
+    };
+    getAllBooks();
+  }, []);
   return (
     <div className="search-books">
       <div className="search-books-bar">
@@ -51,7 +58,7 @@ const SearchPage = () => {
         </div>
       </div>
       <div className="search-books-results">
-        <Books books={result} />
+        <Books books={result} selectedBooks = {selectedBooks} />
       </div>
     </div>
   );

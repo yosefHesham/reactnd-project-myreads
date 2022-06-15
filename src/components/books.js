@@ -4,7 +4,7 @@ import React from "react";
 import Book from "./book";
 
 const Books = (props) => {
-  const { books, selectedBooks, updateBook } = props;
+  const { books, updateBook } = props;
 
   return (
     <ol className="books-grid">
@@ -17,7 +17,6 @@ const Books = (props) => {
               image={!book.imageLinks ? "" : book.imageLinks.thumbnail}
               shelf={book.shelf}
               id={book.id}
-              selectedBooks={selectedBooks}
               updateBook={updateBook}
             />
           }

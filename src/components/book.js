@@ -27,11 +27,9 @@ When you click on an option:
 */
 
 const Book = (props) => {
-  const { id, title, authors, image, shelf, selectedBooks, updateBook } = props;
+  const { id, title, authors, image, shelf,  updateBook } = props;
   const bgImage = `url(${image})`;
-  const selectedBook = selectedBooks
-    ? selectedBooks.find((book) => book.id === id)
-    : null;
+ 
   return (
     <div className="book">
       <div className="book-top">
@@ -43,7 +41,7 @@ const Book = (props) => {
           <select
             onChange={(e) =>  {
               updateBook(id, e.target.value) }}
-            defaultValue={selectedBook ? selectedBook.shelf : shelf}
+            defaultValue={shelf}
           >
             <option value="move" disabled>
               Move to...
@@ -63,13 +61,16 @@ const Book = (props) => {
 };
 
 Book.propTypes = {
-  authors: PropTypes.instanceOf(Array).isRequired,
+  authors: PropTypes.instanceOf(Array),
   id: PropTypes.string,
   image: PropTypes.string,
   selectedBooks:PropTypes.instanceOf(Array),
   shelf: PropTypes.string,
   title: PropTypes.string,
   updateBook: PropTypes.func
+}
+Book.defaultProps = {
+  authors:[]
 }
 
 export default Book;

@@ -47,6 +47,11 @@ const SearchPage = () => {
     setResult(result)
     await update(bookId,shelf)
   }
+  const searchBooks = result.map((searchedBook) => {
+    const myBook = selectedBooks.filter((myBook) => myBook.id === searchedBook.id)[0];
+    searchedBook.shelf = myBook ? myBook.shelf : "none";
+    return searchedBook;
+    });
   return (
     <div className="search-books">
       <div className="search-books-bar">
@@ -63,7 +68,7 @@ const SearchPage = () => {
         </div>
       </div>
       <div className="search-books-results">
-        <Books books={result} selectedBooks = {selectedBooks} updateBook={updateBook} />
+        <Books books={searchBooks} selectedBooks = {selectedBooks} updateBook={updateBook} />
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import React from "react";
 
 import Book from "./book";
@@ -25,5 +26,11 @@ const Books = (props) => {
     </ol>
   );
 };
+
+Books.propTypes = {
+  books: PropTypes.instanceOf(Array).isRequired,
+  selectedBooks: PropTypes.instanceOf(Array).isRequired,
+  updateBook: PropTypes.func.isRequired
+}
 
 export default Books;

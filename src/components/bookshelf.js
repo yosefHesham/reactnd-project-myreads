@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import React from "react";
 
 import Books from "./books"
@@ -10,6 +11,12 @@ const BookShelf = (props) => {
     <Books books={books} updateBook={updateBook}/>
   </div>
 </div>)
+}
+
+BookShelf.propTypes = {
+  books: PropTypes.instanceOf(Array),
+  shelfTitle: PropTypes.string,
+  updateBook: PropTypes.func
 }
 
 export default BookShelf

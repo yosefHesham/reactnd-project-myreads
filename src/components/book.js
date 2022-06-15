@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import React from "react";
 
 const options = [
@@ -60,5 +61,15 @@ const Book = (props) => {
     </div>
   );
 };
+
+Book.propTypes = {
+  author: PropTypes.string,
+  id: PropTypes.string,
+  image: PropTypes.string,
+  selectedBooks:PropTypes.instanceOf(Array),
+  shelf: PropTypes.string,
+  title: PropTypes.string,
+  updateBook: PropTypes.func
+}
 
 export default Book;

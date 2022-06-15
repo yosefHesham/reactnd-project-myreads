@@ -13,7 +13,7 @@ const Books = (props) => {
           {
             <Book
               title={book.title}
-              author={book.author}
+              authors={book.authors}
               image={!book.imageLinks ? "" : book.imageLinks.thumbnail}
               shelf={book.shelf}
               id={book.id}
@@ -29,7 +29,7 @@ const Books = (props) => {
 
 Books.propTypes = {
   books: PropTypes.instanceOf(Array).isRequired,
-  selectedBooks: PropTypes.instanceOf(Array).isRequired,
+  selectedBooks: PropTypes.instanceOf(Array),
   updateBook: PropTypes.func.isRequired
 }
 

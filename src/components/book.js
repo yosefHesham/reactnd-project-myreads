@@ -27,7 +27,7 @@ When you click on an option:
 */
 
 const Book = (props) => {
-  const { id, title, author, image, shelf, selectedBooks, updateBook } = props;
+  const { id, title, authors, image, shelf, selectedBooks, updateBook } = props;
   const bgImage = `url(${image})`;
   const selectedBook = selectedBooks
     ? selectedBooks.find((book) => book.id === id)
@@ -57,13 +57,13 @@ const Book = (props) => {
         </div>
       </div>
       <div className="book-title">{title}</div>
-      <div className="book-authors">{author}</div>
+      <div className="book-authors">{authors.join(" and ")}</div>
     </div>
   );
 };
 
 Book.propTypes = {
-  author: PropTypes.string,
+  authors: PropTypes.instanceOf(Array).isRequired,
   id: PropTypes.string,
   image: PropTypes.string,
   selectedBooks:PropTypes.instanceOf(Array),
